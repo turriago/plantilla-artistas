@@ -1,0 +1,13 @@
+PEDIDO PARA CURSOR (después del taller):
+Organizar Neon + Vercel para cada artista.
+
+Qué hacer:
+1. Armar hoja de control (número 01-N, nombre, base Neon, URL Vercel, admin, estado).
+2. Guiar o ejecutar configurar.cmd artista por artista.
+3. Una base Neon por artista (portafolio1, portafolio2...).
+4. Un proyecto Vercel por artista (portafolio-01, portafolio-02...).
+5. Entregar a cada uno: link del sitio + /admin con clave 0000.
+6. No mezclar bases ni números entre artistas.
+
+Nota: lo local del taller YA está (Docker + arrancar.cmd + admin 0000).
+Esto es SOLO para publicar en internet después.

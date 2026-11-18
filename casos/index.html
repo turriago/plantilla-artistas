@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Proyectos | Portafolio</title>
+  <meta name="theme-color" content="#07081a">
+  <link rel="icon" type="image/png" href="../assets/favicon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/casos.css">
+</head>
+<body>
+
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-spin" role="status" aria-label="Cargando">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div class="loader-title">Cargando...</div>
+      <div class="loader-line"></div>
+    </div>
+  </div>
+
+
+  <header>
+    <div class="container nav-inner">
+      <a href="../inicio/" class="brand" aria-label="Historias, inicio">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48">
+            <defs>
+              <linearGradient id="brandRing" x1="8" y1="4" x2="42" y2="44">
+                <stop offset="0" stop-color="#22e5ff"/>
+                <stop offset=".5" stop-color="#7c5cff"/>
+                <stop offset="1" stop-color="#ff2bd6"/>
+              </linearGradient>
+            </defs>
+            <circle cx="24" cy="24" r="18" fill="none" stroke="url(#brandRing)" stroke-width="2.4"/>
+            <circle cx="24" cy="24" r="7.5" fill="none" stroke="url(#brandRing)" stroke-width="2"/>
+            <circle cx="24" cy="24" r="2.6" fill="#22e5ff"/>
+          </svg>
+        </span>
+        <span class="logo-text">HISTORIAS</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="../inicio/"><span class="nav-index">01</span><span class="nav-label">Inicio</span></a>
+        <a href="../casos/" class="is-current"><span class="nav-index">02</span><span class="nav-label">Proyectos</span></a>
+        <a href="../fotos/"><span class="nav-index">03</span><span class="nav-label">Fotos</span></a>
+        <a href="../contacto/"><span class="nav-index">04</span><span class="nav-label">Contacto</span></a>
+      </nav>
+      <span class="nav-rule" aria-hidden="true"></span>
+      <button class="theme-button" id="themeButton" type="button" aria-label="Cambiar a blanco y negro"><span class="theme-orb" aria-hidden="true"></span><span class="theme-label">BLACK & WHITE</span></button>
+      <button class="menu-button" id="menuButton" type="button" aria-label="Abrir menú">☰</button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="cases-section">
+
+      <div class="container">
+
+        <div class="cases-header reveal">
+          <span class="section-label">PORTAFOLIO</span>
+          <h2><strong>Proyectos.</strong></h2>
+          <p>
+            Cuatro piezas: el póster de Sabrina Carpenter, Smartfilms, el póster de inteligencia artificial y el rodaje en Mocho.
+          </p>
+        </div>
+
+        <div class="case-grid">
+
+          <article class="case-card reveal" id="sabrina">
+            <div class="case-frame case-reel" id="caseReel">
+              <img id="casePhoto" src="../assets/casos/sabrina-proceso.jpg" alt="Collage de Sabrina Carpenter abierto en Illustrator">
+              <button class="case-arrow prev" id="casePrev" type="button" aria-label="Foto anterior">‹</button>
+              <button class="case-arrow next" id="caseNext" type="button" aria-label="Foto siguiente">›</button>
+              <div class="case-dots" role="group" aria-label="Fotos del caso">
+                <button type="button" aria-current="true" aria-label="Foto 1"></button>
+                <button type="button" aria-label="Foto 2"></button>
+              </div>
+              <button class="case-zoom" id="caseZoom" type="button">Ampliar</button>
+              <span class="case-index">01</span>
+            </div>
+            <div class="case-body">
+              <h3>Sabrina Carpenter</h3>
+              <dl>
+                <div>
+                  <dt>Formato</dt>
+                  <dd>Póster</dd>
+                </div>
+                <div>
+                  <dt>Rol</dt>
+                  <dd>Por Alejandra Lemus Camacho</dd>
+                </div>
+                <div>
+                  <dt>Herramientas</dt>
+                  <dd>Adobe Illustrator</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <article class="case-card reveal" id="smartfilms">
+            <div class="case-frame case-reel" id="smartReel">
+              <img id="smartPhoto" src="../assets/casos/smartfilms.jpg" alt="Certificado de Smartfilms Barranquilla a nombre de Alejandra Lemus Camacho">
+              <video id="smartVideo" playsinline muted controls hidden></video>
+              <button class="case-arrow prev" id="smartPrev" type="button" aria-label="Anterior">‹</button>
+              <button class="case-arrow next" id="smartNext" type="button" aria-label="Siguiente">›</button>
+              <div class="case-dots" role="group" aria-label="Certificado y videos">
+                <button type="button" aria-current="true" aria-label="Certificado"></button>
+                <button type="button" aria-label="Video 1"></button>
+                <button type="button" aria-label="Video 2"></button>
+              </div>
+              <button class="case-zoom" id="smartZoom" type="button">Ampliar</button>
+              <span class="case-index">02</span>
+            </div>
+            <div class="case-body">
+              <h3>Smartfilms Barranquilla</h3>
+              <dl>
+                <div>
+                  <dt>Formato</dt>
+                  <dd>Certificado y video</dd>
+                </div>
+                <div>
+                  <dt>Rol</dt>
+                  <dd>Asistente</dd>
+                </div>
+                <div>
+                  <dt>Herramientas</dt>
+                  <dd>Guion, realización con celular y postproducción</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <article class="case-card reveal">
+            <div class="case-frame case-reel" id="iaReel">
+              <img id="iaPhoto" src="../assets/casos/ia-poster.jpg" alt="Alejandra Lemus Camacho junto al póster sobre inteligencia artificial en estudiantes de ingeniería">
+              <video id="iaVideo" playsinline muted controls hidden></video>
+              <button class="case-arrow prev" id="iaPrev" type="button" aria-label="Anterior">‹</button>
+              <button class="case-arrow next" id="iaNext" type="button" aria-label="Siguiente">›</button>
+              <div class="case-dots" role="group" aria-label="Póster y video">
+                <button type="button" aria-current="true" aria-label="Foto"></button>
+                <button type="button" aria-label="Video"></button>
+              </div>
+              <button class="case-zoom" id="iaZoom" type="button">Ampliar</button>
+              <span class="case-index">03</span>
+            </div>
+            <div class="case-body">
+              <h3>Optimización del uso de la Inteligencia Artificial en estudiantes de Ingeniería</h3>
+              <dl>
+                <div>
+                  <dt>Formato</dt>
+                  <dd>Póster</dd>
+                </div>
+                <div>
+                  <dt>Rol</dt>
+                  <dd>Alejandra Lemus Camacho y Yeraldo Castro Martínez</dd>
+                </div>
+                <div>
+                  <dt>Herramientas</dt>
+                  <dd>Por asignar</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <article class="case-card reveal" id="mocho">
+            <div class="case-frame case-reel" id="mochoReel">
+              <img id="mochoPhoto" src="../assets/casos/mocho-tripode.jpg" alt="Celular en trípode grabando el manglar">
+              <button class="case-arrow prev" id="mochoPrev" type="button" aria-label="Anterior">‹</button>
+              <button class="case-arrow next" id="mochoNext" type="button" aria-label="Siguiente">›</button>
+              <div class="case-dots" role="group" aria-label="Fotos del rodaje">
+                <button type="button" aria-current="true" aria-label="Foto 1"></button>
+                <button type="button" aria-label="Foto 2"></button>
+              </div>
+              <button class="case-zoom" id="mochoZoom" type="button">Ampliar</button>
+              <span class="case-index">04</span>
+            </div>
+            <div class="case-body">
+              <h3>Mocho, Barranquilla</h3>
+              <dl>
+                <div>
+                  <dt>Formato</dt>
+                  <dd>Rodaje</dd>
+                </div>
+                <div>
+                  <dt>Rol</dt>
+                  <dd>Por asignar</dd>
+                </div>
+                <div>
+                  <dt>Herramientas</dt>
+                  <dd>Celular y trípode</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__copy">© <span id="year"></span> Alejandra Lemus Camacho.</p>
+      <ul class="footer__social">
+        <li>
+          <a href="../contacto/" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3.5" y="3.5" width="17" height="17" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle class="dot" cx="17.2" cy="6.8" r="1.1"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="../contacto/" aria-label="Correo">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="5.5" width="18" height="13" rx="3"/>
+              <path d="M4 8l8 5.5L20 8"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="../contacto/" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.5 10v7.5M6.5 6.5v.01"/>
+              <path d="M11 17.5V10m0 3.2c0-1.8 1.2-3.2 3-3.2s3 1.2 3 3.4v4.1"/>
+              <rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="../contacto/" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 20l1.2-4.1A8 8 0 1 1 8.2 19L4 20z"/>
+              <path d="M9.2 8.8c.2 2.6 2.4 5 5.2 5.6l1-1.1-1.9-1-.8.7c-.9-.4-1.7-1.2-2.1-2.1l.7-.8-1-1.9-1.1 1.2z"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+
+  <button class="back-top" id="backTop" aria-label="Volver arriba">↑</button>
+
+  <div class="case-lb" id="caseLb" hidden role="dialog" aria-modal="true" aria-label="Pieza ampliada">
+    <button type="button" id="caseLbx" aria-label="Cerrar">×</button>
+    <button class="case-lb-arrow prev" id="caseLbPrev" type="button" aria-label="Anterior">‹</button>
+    <button class="case-lb-arrow next" id="caseLbNext" type="button" aria-label="Siguiente">›</button>
+    <img id="caseLbimg" alt="">
+    <video id="caseLbvideo" playsinline controls hidden></video>
+    <p class="case-lb-cap" id="caseLbcap" hidden></p>
+  </div>
+
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

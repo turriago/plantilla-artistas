@@ -1,0 +1,202 @@
+/* Contacto, según el diseño de Historias · Contacto. */
+
+body:has(.contact-wrap) {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body:has(.contact-wrap) main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.contact-wrap {
+  --surface: #0d1222;
+  --line: #1c2a44;
+  --text: #eaf0ff;
+  --muted: #93a0bd;
+  --cyan: #22d3ee;
+  --violet: #8b5cf6;
+  --magenta: #c026d3;
+  --on-accent: #06101c;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 72px;
+  align-items: center;
+  padding-top: 72px;
+  padding-bottom: 72px;
+  font-family: "Outfit", system-ui, sans-serif;
+  color: var(--text);
+}
+
+.contact-wrap .tag {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  color: var(--cyan);
+  margin: 0 0 18px;
+}
+
+.contact-wrap h1 {
+  font-family: "Orbitron", "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  line-height: 1.08;
+  margin: 0 0 24px;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.contact-wrap h1 span {
+  display: block;
+  background: linear-gradient(90deg, var(--cyan), var(--violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.contact-wrap .lead {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 44ch;
+  margin: 0 0 32px;
+  line-height: 1.6;
+}
+
+.contact-wrap .cv {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.contact-wrap .btn {
+  display: inline-flex;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: 0;
+  background: linear-gradient(90deg, var(--cyan), var(--magenta));
+  color: var(--on-accent);
+  font: 600 0.95rem "Outfit", sans-serif;
+}
+
+.contact-wrap .btn.is-disabled,
+.contact-wrap .btn.is-disabled:hover {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none;
+  box-shadow: none;
+}
+
+.contact-wrap .note {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.contact-wrap .list {
+  display: grid;
+  gap: 14px;
+}
+
+.contact-wrap .row {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 22px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.contact-wrap .ico {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  color: var(--cyan);
+}
+
+.contact-wrap .ico svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contact-wrap .txt {
+  min-width: 0;
+}
+
+.contact-wrap .txt b {
+  display: block;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.contact-wrap .txt small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
+.contact-wrap .empty {
+  color: var(--muted);
+  font-size: 0.8rem;
+  border: 1px dashed var(--line);
+  border-radius: 999px;
+  padding: 4px 12px;
+  white-space: nowrap;
+}
+
+.contact-wrap .copy {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font: 500 0.85rem "Outfit", sans-serif;
+  cursor: pointer;
+}
+
+body.bw .contact-wrap {
+  --surface: #fff;
+  --line: #d5def0;
+  --text: #0d1428;
+  --muted: #55627f;
+  --cyan: #0891b2;
+  --violet: #6d28d9;
+  --magenta: #a21caf;
+  --on-accent: #fff;
+}
+
+@media (max-width: 860px) {
+  .contact-wrap {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+}
+
+@media (max-width: 420px) {
+  .contact-wrap .row {
+    grid-template-columns: 44px 1fr;
+  }
+
+  .contact-wrap .empty,
+  .contact-wrap .copy {
+    grid-column: 2;
+    justify-self: start;
+  }
+}

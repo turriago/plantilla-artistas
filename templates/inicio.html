@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Portafolio</title>
+  <meta name="theme-color" content="#07081a">
+  <link rel="icon" type="image/png" href="/assets/favicon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Orbitron:wght@500;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/sobre-mi.css">
+  <link rel="stylesheet" href="/css/inicio.css?v=4">
+  {% if editing %}<meta name="csrf" content="{{ csrf }}"><link rel="stylesheet" href="/css/editar.css">{% endif %}
+</head>
+<body class="home{% if editing %} editing{% endif %}" {% if editing %}data-save="{{ edit_save }}"{% endif %}>
+  {% include "partials/loader.html" %}
+  <div class="bg" aria-hidden="true"></div>
+  {% set current = "inicio" %}
+  {% include "partials/header.html" %}
+  <main>
+    <section class="container hero" id="ella">
+      <div class="copy about-content">
+        <div class="eyebrow">Sobre mí</div>
+        <h1>
+          <span class="first"{% if editing %} contenteditable="plaintext-only" data-field="first_name"{% endif %}>{{ s.first_name }}</span>
+          <span class="last"{% if editing %} contenteditable="plaintext-only" data-field="last_name"{% endif %}>{{ s.last_name }}</span>
+        </h1>
+        <p class="role"{% if editing %} contenteditable="plaintext-only" data-field="role"{% endif %}>{{ s.role }}</p>
+        <p class="bio"{% if editing %} contenteditable="plaintext-only" data-field="bio" data-multiline="1"{% endif %}>{{ s.bio }}</p>
+        <h3 class="skill-label software">Software</h3>
+        <div class="pills" {% if editing %}data-pills="software_pills"{% endif %}>
+          {% for pill in software_pills %}
+          <span class="pill {{ 'is-live' if pill.live else '' }}"{% if editing %} contenteditable="plaintext-only"{% endif %}>{{ pill.text }}</span>
+          {% endfor %}
+          {% if editing %}<button class="pill pill-add" type="button" data-add-pill>+</button>{% endif %}
+        </div>
+        <h3 class="skill-label hardware">Hardware y producción</h3>
+        <div class="pills" {% if editing %}data-pills="hardware_pills"{% endif %}>
+          {% for pill in hardware_pills %}
+          <span class="pill {{ 'is-live' if pill.live else '' }}"{% if editing %} contenteditable="plaintext-only"{% endif %}>{{ pill.text }}</span>
+          {% endfor %}
+          {% if editing %}<button class="pill pill-add" type="button" data-add-pill>+</button>{% endif %}
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="{{ '/editar/contacto/' if editing else '../contacto/' }}">Escribirme <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="#muestra">Ver una muestra</a>
+          {% if editing %}
+          <label class="btn btn-ghost">Subir CV (PDF) <input id="cvFile" type="file" accept="application/pdf" hidden></label>
+          {% else %}
+          <a class="btn btn-ghost" href="/assets/cv.pdf" download data-cv>Descargar CV (PDF) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg></a>
+          {% endif %}
+        </div>
+        <p class="note cv-note" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+          El PDF todavía no está en el sitio.
+        </p>
+      </div>
+      <figure class="profile-wrapper">
+        {% if editing %}
+        <label class="edit-photo" title="Clic para cambiar la foto">
+          <input id="portraitFile" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+          <img class="profile-image" src="/{{ s.portrait }}" alt="Retrato de {{ s.name }}">
+        </label>
+        {% else %}
+        <img class="profile-image" src="/{{ s.portrait }}" alt="Retrato de {{ s.name }}">
+        {% endif %}
+        <figcaption class="profile-caption">
+          <span{% if editing %} contenteditable="plaintext-only" data-field="caption_small"{% endif %}>{{ s.caption_small }}</span>
+          <strong{% if editing %} contenteditable="plaintext-only" data-field="caption_strong"{% endif %}>{{ s.caption_strong }}</strong>
+        </figcaption>
+      </figure>
+    </section>
+    <section class="container proof" id="muestra">
+      <div class="eyebrow">Muestra</div>
+      <h2>{% if editing %}<b contenteditable="plaintext-only" data-field="proof_title">{{ s.proof_title }}</b>{% else %}{{ s.proof_title }}{% endif %} <span{% if editing %} contenteditable="plaintext-only" data-field="proof_accent"{% endif %}>{{ s.proof_accent }}</span></h2>
+      <div class="proof-grid">
+        {% for project in home_projects %}
+        <div>
+          {% if editing %}
+          <label class="edit-photo" title="Clic para cambiar la imagen">
+            <input type="file" data-cover="{{ project.id }}" accept="image/jpeg,image/png,image/webp" hidden>
+            <img src="/{{ project.cover_path }}" alt="{{ project.cover_alt }}">
+          </label>
+          <h3 contenteditable="plaintext-only" data-project="{{ project.id }}" data-part="title">{{ project.title }}</h3>
+          <p contenteditable="plaintext-only" data-project="{{ project.id }}" data-part="home_line">{{ project.home_line }}</p>
+          {% else %}
+          <a href="../casos/#{{ project.slug }}">
+            <img src="/{{ project.cover_path }}" alt="{{ project.cover_alt }}">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.home_line }}</p>
+          </a>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      <div class="actions">
+        <a class="btn btn-ghost" href="{{ '/editar/casos/' if editing else '../casos/' }}">Ver todos los proyectos</a>
+        <a class="btn btn-primary" href="{{ '/editar/contacto/' if editing else '../contacto/' }}">Escribirme</a>
+      </div>
+    </section>
+  </main>
+  {% include "partials/footer.html" %}
+  <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+    <button type="button" id="lbx" aria-label="Cerrar">×</button>
+    <img id="lbimg" alt="">
+  </div>
+  <script src="/js/main.js"></script>
+  {% if editing %}{% include "partials/editbar.html" %}<script src="/js/editar.js?v=2"></script>{% endif %}
+</body>
+</html>

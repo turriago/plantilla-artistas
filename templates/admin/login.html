@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entrar | Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="gate">
+  <main>
+    <form method="post">
+      <p class="tag">ADMIN</p>
+      <h1>Clave de edición</h1>
+      <p>La página pública no pide clave. Esta puerta es solo para editar.</p>
+      {% if error %}<p class="warn">{{ error }}</p>{% endif %}
+      <input type="hidden" name="csrf" value="{{ csrf }}">
+      <label for="password">Clave</label>
+      <input id="password" name="password" type="password" inputmode="numeric" autocomplete="current-password" required>
+      <button type="submit">Entrar</button>
+    </form>
+  </main>
+</body>
+</html>

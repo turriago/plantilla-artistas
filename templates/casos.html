@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Proyectos | Portafolio</title>
+  <meta name="theme-color" content="#07081a">
+  <link rel="icon" type="image/png" href="/assets/favicon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/casos.css">
+  {% if editing %}<meta name="csrf" content="{{ csrf }}"><link rel="stylesheet" href="/css/editar.css">{% endif %}
+</head>
+<body{% if editing %} class="editing" data-save="{{ edit_save }}"{% endif %}>
+  {% include "partials/loader.html" %}
+  {% set current = "casos" %}
+  {% include "partials/header.html" %}
+  <main>
+    <section class="cases-section">
+      <div class="container">
+        <div class="cases-header reveal">
+          <span class="section-label">PORTAFOLIO</span>
+          <h2><strong>Proyectos.</strong></h2>
+          <p{% if editing %} contenteditable="plaintext-only" data-field="projects_intro" data-multiline="1"{% endif %}>{{ s.projects_intro }}</p>
+        </div>
+        <div class="case-grid">
+          {% for project in projects %}
+          <article class="case-card reveal" id="{{ project.slug }}">
+            <div class="case-frame case-reel" data-reel data-items="{{ project.public_media | tojson | forceescape }}">
+              <img alt="" src="{{ project.public_media[0].src if project.public_media else '' }}">
+              <video playsinline muted controls preload="none" hidden></video>
+              <button class="case-arrow prev" type="button" aria-label="Anterior">‹</button>
+              <button class="case-arrow next" type="button" aria-label="Siguiente">›</button>
+              <div class="case-dots" role="group" aria-label="Piezas del proyecto"></div>
+              <button class="case-zoom" type="button">Ampliar</button>
+              {% if editing %}<label class="reel-change">Cambiar foto o video<input class="replace-current" type="file" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime,.mov,.m4v" hidden></label>{% endif %}
+              <span class="case-index">{{ "%02d"|format(loop.index) }}</span>
+            </div>
+            <div class="case-body">
+              <h3{% if editing %} contenteditable="plaintext-only" data-project="{{ project.id }}" data-part="title"{% endif %}>{{ project.title }}</h3>
+              <dl>
+                <div><dt>Formato</dt><dd{% if editing %} contenteditable="plaintext-only" data-project="{{ project.id }}" data-part="format"{% endif %}>{{ project.format }}</dd></div>
+                <div><dt>Rol</dt><dd{% if editing %} contenteditable="plaintext-only" data-project="{{ project.id }}" data-part="role"{% endif %}>{{ project.role }}</dd></div>
+                <div><dt>Herramientas</dt><dd{% if editing %} contenteditable="plaintext-only" data-project="{{ project.id }}" data-part="tools"{% endif %}>{{ project.tools }}</dd></div>
+              </dl>
+              {% if editing %}
+              <label class="edit-add">Cambiar la que se ve<input class="replace-current" type="file" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime,.mov,.m4v" hidden></label>
+              <button class="edit-remove" type="button" data-remove-current>Quitar la que se ve</button>
+              <label class="edit-add">Agregar foto o video<input type="file" data-upload-project="{{ project.id }}" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime,.mov,.m4v" hidden></label>
+              <button class="edit-remove" type="button" data-delete="{{ project.id }}">Quitar proyecto</button>
+              {% endif %}
+            </div>
+          </article>
+          {% endfor %}
+          {% if editing %}
+          <article class="case-card case-card-new">
+            <button class="case-new" type="button" data-new-project>
+              <span class="case-new-mark" aria-hidden="true">+</span>
+              <span>Agregar proyecto</span>
+            </button>
+          </article>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+  </main>
+  {% include "partials/footer.html" %}
+  <div class="case-lb" id="caseLb" hidden role="dialog" aria-modal="true" aria-label="Pieza ampliada">
+    <button type="button" id="caseLbx" aria-label="Cerrar">×</button>
+    <button class="case-lb-arrow prev" id="caseLbPrev" type="button" aria-label="Anterior">‹</button>
+    <button class="case-lb-arrow next" id="caseLbNext" type="button" aria-label="Siguiente">›</button>
+    <img id="caseLbimg" alt="">
+    <video id="caseLbvideo" playsinline controls preload="none" hidden></video>
+    <p class="case-lb-cap" id="caseLbcap" hidden></p>
+    {% if editing %}<label class="case-lb-change">Cambiar esta foto o video<input id="changeSlideFile" type="file" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime,.mov,.m4v" hidden></label>{% endif %}
+  </div>
+  <script src="/js/main.js"></script>
+  <script src="/js/reels.js"></script>
+  {% if editing %}{% include "partials/editbar.html" %}<script src="/js/editar.js?v=2"></script>{% endif %}
+</body>
+</html>

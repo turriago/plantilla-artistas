@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Falta PostgreSQL</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <main class="admin-main">
+    <div class="card">
+      <h1>La página sigue igual</h1>
+      <p>El admin necesita PostgreSQL. Mientras no esté, el sitio público se sirve como hasta ahora y no se modifica.</p>
+      <p class="warn">{{ message }}</p>
+      <p class="muted">Cuando PostgreSQL esté instalado, crea la base <strong>historias</strong> y arranca de nuevo con <strong>python server.py</strong>. La dirección del admin es /admin.</p>
+    </div>
+  </main>
+</body>
+</html>

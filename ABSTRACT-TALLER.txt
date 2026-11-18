@@ -1,0 +1,67 @@
+ABSTRACT — Taller de portafolio web para artistas y audiovisuales
+================================================================
+
+¿Por qué este taller?
+---------------------
+Hoy muchos artistas y personas de audiovisuales dependen solo de Instagram,
+WhatsApp o archivos sueltos para mostrarse. Eso dificulta que un casting,
+una productora o un cliente vea su trabajo completo en un solo lugar.
+
+Este taller existe para que cada participante salga con un portafolio web
+profesional, editable por ellos mismos, sin necesidad de saber programar.
+La idea es pasar de “te mando fotos por chat” a “aquí está mi link”.
+
+
+Qué es el proyecto
+------------------
+Plantilla-artistas es una página web lista para usar, con:
+- Inicio (nombre, oficio, presentación, foto)
+- Proyectos
+- Fotos
+- Contacto
+- Panel de administración para cambiar textos, fotos y CV
+- Diseño adaptable a computador y celular
+
+Durante el taller se trabaja en la computadora. Después se publica en
+internet para que cada persona tenga su propio enlace.
+
+
+Para quién es
+-------------
+Artistas, actores, modelos, fotógrafos, cámaras, editores y perfiles
+audiovisuales que quieran presentarse de forma clara y profesional.
+
+
+Qué se llevan
+-------------
+- Su portafolio armado con sus datos y materiales
+- Clave de administración para seguir editando
+- Más adelante: link público para compartir
+
+
+Qué deben traer el día del evento / sesión
+------------------------------------------
+- Cédula
+- Foto de perfil (menos de 4 MB)
+- CV en PDF (si lo tienen, menos de 4 MB)
+- Textos cortos: nombre, oficio y presentación
+- Material de 1 o más proyectos (fotos o video MP4 liviano)
+
+
+Paso a paso del taller
+----------------------
+1. Bienvenida y propósito (por qué un portafolio web ayuda más que solo redes)
+2. Encender la herramienta en la PC (Docker + arrancar el sitio)
+3. Entrar al admin (clave 0000) y conocer el panel
+4. Cargar datos personales: nombre, apellido, oficio, texto, foto, contacto
+5. Subir CV y revisar la portada
+6. Crear / cargar proyectos y fotos
+7. Revisar cómo se ve en el navegador (y en celular si es posible)
+8. (Opcional) Ajuste visual de diseño con ayuda de IA, sin tocar código a mano
+9. Cierre: qué sigue (publicación del link en internet después del taller)
+
+
+Mensaje central para los asistentes
+-----------------------------------
+“No vienes a aprender a programar. Vienes a dejar tu trabajo listo en una
+página clara, tuya, que puedas actualizar y compartir.”

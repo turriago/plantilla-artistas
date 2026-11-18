@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Contacto | Portafolio</title>
+  <meta name="theme-color" content="#07081a">
+  <link rel="icon" type="image/png" href="/assets/favicon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Outfit:wght@400;500;600&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/contacto.css">
+  {% if editing %}<meta name="csrf" content="{{ csrf }}"><link rel="stylesheet" href="/css/editar.css">{% endif %}
+</head>
+<body{% if editing %} class="editing" data-save="{{ edit_save }}"{% endif %}>
+  {% include "partials/loader.html" %}
+  {% set current = "contacto" %}
+  {% include "partials/header.html" %}
+  <main>
+    <div class="container contact-wrap">
+      <section class="intro">
+        <p class="tag">CONTACTO</p>
+        <h1>Hablemos de <span>un proyecto.</span></h1>
+        <p class="lead"{% if editing %} contenteditable="plaintext-only" data-field="contact_lead" data-multiline="1"{% endif %}>{{ s.contact_lead }}</p>
+        <div class="cv">
+          {% if editing %}
+          <label class="btn">Subir CV (PDF)<input id="cvFile" type="file" accept="application/pdf" hidden></label>
+          {% else %}
+          <a class="btn is-disabled" href="/assets/cv.pdf" download data-cv aria-disabled="true">Descargar CV (PDF)</a>
+          <span class="note cv-note">El PDF aún no está en el sitio.</span>
+          {% endif %}
+        </div>
+      </section>
+      <section class="list" aria-label="Medios de contacto">
+        <div class="row">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+          <span class="txt"><b>Correo</b><small id="mail"{% if editing %} contenteditable="plaintext-only" data-field="contact_email" data-placeholder="Correo por agregar"{% endif %}>{{ s.contact_email if editing else (s.contact_email or "Correo por agregar") }}</small></span>
+          <button class="copy" type="button" id="copyMail">Copiar</button>
+        </div>
+        {% if editing %}
+        <div class="row">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-5m0 2a2.5 2.5 0 0 1 5 0v3"/></svg></span>
+          <span class="txt"><b>LinkedIn</b><small contenteditable="plaintext-only" data-field="contact_linkedin" data-placeholder="Pega el enlace">{{ s.contact_linkedin }}</small></span>
+        </div>
+        <div class="row">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4.2A8 8 0 1 1 8.4 18.8z"/></svg></span>
+          <span class="txt"><b>WhatsApp</b><small contenteditable="plaintext-only" data-field="contact_whatsapp" data-placeholder="Número con indicativo">{{ s.contact_whatsapp }}</small></span>
+        </div>
+        <div class="row">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5v.01"/></svg></span>
+          <span class="txt"><b>Instagram de trabajo</b><small contenteditable="plaintext-only" data-field="contact_instagram" data-placeholder="Pega el enlace">{{ s.contact_instagram }}</small></span>
+        </div>
+        {% else %}
+        {% if s.contact_linkedin %}
+        <a class="row" href="{{ s.contact_linkedin }}" target="_blank" rel="noopener">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-5m0 2a2.5 2.5 0 0 1 5 0v3"/></svg></span>
+          <span class="txt"><b>LinkedIn</b><small>Perfil profesional</small></span>
+        </a>
+        {% else %}
+        <div class="row">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-5m0 2a2.5 2.5 0 0 1 5 0v3"/></svg></span>
+          <span class="txt"><b>LinkedIn</b><small>Perfil profesional</small></span>
+          <span class="empty">Enlace por agregar</span>
+        </div>
+        {% endif %}
+        {% if s.contact_whatsapp %}
+        <a class="row" href="https://wa.me/{{ s.contact_whatsapp }}" target="_blank" rel="noopener">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4.2A8 8 0 1 1 8.4 18.8z"/></svg></span>
+          <span class="txt"><b>WhatsApp</b><small>Abre el chat directo</small></span>
+        </a>
+        {% else %}
+        <div class="row">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4.2A8 8 0 1 1 8.4 18.8z"/></svg></span>
+          <span class="txt"><b>WhatsApp</b><small>Abre el chat directo</small></span>
+          <span class="empty">Número por agregar</span>
+        </div>
+        {% endif %}
+        {% if s.contact_instagram %}
+        <a class="row" href="{{ s.contact_instagram }}" target="_blank" rel="noopener">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5v.01"/></svg></span>
+          <span class="txt"><b>Instagram de trabajo</b><small>Solo portafolio</small></span>
+        </a>
+        {% else %}
+        <div class="row">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5v.01"/></svg></span>
+          <span class="txt"><b>Instagram de trabajo</b><small>Solo portafolio</small></span>
+          <span class="empty">Enlace por agregar</span>
+        </div>
+        {% endif %}
+        {% endif %}
+      </section>
+    </div>
+  </main>
+  <button class="back-top" id="backTop" aria-label="Volver arriba">↑</button>
+  <script src="/js/main.js"></script>
+  <script>
+    const copyMail = document.getElementById("copyMail");
+    const mailText = document.getElementById("mail");
+    if (copyMail && mailText) {
+      copyMail.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(mailText.textContent.trim());
+          copyMail.textContent = "Copiado";
+        } catch (error) {
+          copyMail.textContent = "Selecciona el texto";
+        }
+        window.setTimeout(() => { copyMail.textContent = "Copiar"; }, 1800);
+      });
+    }
+  </script>
+  {% if editing %}{% include "partials/editbar.html" %}<script src="/js/editar.js?v=2"></script>{% endif %}
+</body>
+</html>

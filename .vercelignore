@@ -1,0 +1,12 @@
+.env
+.env.*
+uploads/
+__pycache__/
+enlace.txt
+configurar.cmd
+configurar.ps1
+publicar.cmd
+publicar.ps1
+base.txt
+DISENO.md
+PROMPT-IMAGEN.md

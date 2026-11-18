@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Contacto | Portafolio</title>
+  <meta name="theme-color" content="#07081a">
+  <link rel="icon" type="image/png" href="../assets/favicon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Outfit:wght@400;500;600&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/contacto.css">
+</head>
+<body>
+
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-spin" role="status" aria-label="Cargando">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div class="loader-title">Cargando...</div>
+      <div class="loader-line"></div>
+    </div>
+  </div>
+
+
+  <header>
+    <div class="container nav-inner">
+      <a href="../inicio/" class="brand" aria-label="Historias, inicio">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48">
+            <defs>
+              <linearGradient id="brandRing" x1="8" y1="4" x2="42" y2="44">
+                <stop offset="0" stop-color="#22e5ff"/>
+                <stop offset=".5" stop-color="#7c5cff"/>
+                <stop offset="1" stop-color="#ff2bd6"/>
+              </linearGradient>
+            </defs>
+            <circle cx="24" cy="24" r="18" fill="none" stroke="url(#brandRing)" stroke-width="2.4"/>
+            <circle cx="24" cy="24" r="7.5" fill="none" stroke="url(#brandRing)" stroke-width="2"/>
+            <circle cx="24" cy="24" r="2.6" fill="#22e5ff"/>
+          </svg>
+        </span>
+        <span class="logo-text">HISTORIAS</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="../inicio/"><span class="nav-index">01</span><span class="nav-label">Inicio</span></a>
+        <a href="../casos/"><span class="nav-index">02</span><span class="nav-label">Proyectos</span></a>
+        <a href="../fotos/"><span class="nav-index">03</span><span class="nav-label">Fotos</span></a>
+        <a href="../contacto/" class="is-current"><span class="nav-index">04</span><span class="nav-label">Contacto</span></a>
+      </nav>
+      <span class="nav-rule" aria-hidden="true"></span>
+      <button class="theme-button" id="themeButton" type="button" aria-label="Cambiar a blanco y negro"><span class="theme-orb" aria-hidden="true"></span><span class="theme-label">BLACK & WHITE</span></button>
+      <button class="menu-button" id="menuButton" type="button" aria-label="Abrir menú">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="container contact-wrap">
+      <section class="intro">
+        <p class="tag">CONTACTO</p>
+        <h1>Hablemos de <span>un proyecto.</span></h1>
+        <p class="lead">Escríbeme por correo o WhatsApp. En LinkedIn está mi perfil profesional y en Instagram, mi portafolio de trabajo.</p>
+        <div class="cv">
+          <a class="btn is-disabled" href="../assets/cv.pdf" download data-cv aria-disabled="true">Descargar CV (PDF)</a>
+          <span class="note cv-note">El PDF aún no está en el sitio.</span>
+        </div>
+      </section>
+
+      <section class="list" aria-label="Medios de contacto">
+        <div class="row">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+          <span class="txt"><b>Correo</b><small id="mail">Correo por agregar</small></span>
+          <button class="copy" type="button" id="copyMail">Copiar</button>
+        </div>
+        <div class="row">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-5m0 2a2.5 2.5 0 0 1 5 0v3"/></svg></span>
+          <span class="txt"><b>LinkedIn</b><small>Perfil profesional</small></span>
+          <span class="empty">Enlace por agregar</span>
+        </div>
+        <div class="row">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4.2A8 8 0 1 1 8.4 18.8z"/></svg></span>
+          <span class="txt"><b>WhatsApp</b><small>Abre el chat directo</small></span>
+          <span class="empty">Número por agregar</span>
+        </div>
+        <div class="row">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5v.01"/></svg></span>
+          <span class="txt"><b>Instagram de trabajo</b><small>Solo portafolio</small></span>
+          <span class="empty">Enlace por agregar</span>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <button class="back-top" id="backTop" aria-label="Volver arriba">↑</button>
+
+
+  <script src="../js/main.js"></script>
+  <script>
+    const copyMail = document.getElementById("copyMail");
+    const mailText = document.getElementById("mail");
+
+    if (copyMail && mailText) {
+      copyMail.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(mailText.textContent.trim());
+          copyMail.textContent = "Copiado";
+        } catch (error) {
+          copyMail.textContent = "Selecciona el texto";
+        }
+
+        window.setTimeout(() => {
+          copyMail.textContent = "Copiar";
+        }, 1800);
+      });
+    }
+  </script>
+</body>
+</html>

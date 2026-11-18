@@ -1,0 +1,42 @@
+CREATE TABLE IF NOT EXISTS settings (
+  key TEXT PRIMARY KEY,
+  value TEXT NOT NULL DEFAULT ''
+);
+
+CREATE TABLE IF NOT EXISTS projects (
+  id SERIAL PRIMARY KEY,
+  slug TEXT UNIQUE NOT NULL,
+  title TEXT NOT NULL,
+  format TEXT NOT NULL DEFAULT '',
+  role TEXT NOT NULL DEFAULT '',
+  tools TEXT NOT NULL DEFAULT '',
+  home_line TEXT NOT NULL DEFAULT '',
+  show_on_home BOOLEAN NOT NULL DEFAULT FALSE,
+  sort_order INT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS media (
+  id SERIAL PRIMARY KEY,
+  project_id INT NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
+  kind TEXT NOT NULL CHECK (kind IN ('image', 'video')),
+  file_path TEXT NOT NULL,
+  alt TEXT NOT NULL DEFAULT '',
+  caption TEXT NOT NULL DEFAULT '',
+  is_cover BOOLEAN NOT NULL DEFAULT FALSE,
+  sort_order INT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS photos (
+  id SERIAL PRIMARY KEY,
+  file_path TEXT NOT NULL,
+  alt TEXT NOT NULL DEFAULT '',
+  caption TEXT NOT NULL DEFAULT '',
+  sort_order INT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS stored_files (
+  path TEXT PRIMARY KEY,
+  mime TEXT NOT NULL DEFAULT '',
+  bytes BYTEA NOT NULL,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);

@@ -1,0 +1,30 @@
+<header>
+  <div class="container nav-inner">
+    <a href="{{ '/editar/inicio/' if editing else '../inicio/' }}" class="brand" aria-label="Historias, inicio">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48">
+          <defs>
+            <linearGradient id="brandRing" x1="8" y1="4" x2="42" y2="44">
+              <stop offset="0" stop-color="#22e5ff"/>
+              <stop offset=".5" stop-color="#7c5cff"/>
+              <stop offset="1" stop-color="#ff2bd6"/>
+            </linearGradient>
+          </defs>
+          <circle cx="24" cy="24" r="18" fill="none" stroke="url(#brandRing)" stroke-width="2.4"/>
+          <circle cx="24" cy="24" r="7.5" fill="none" stroke="url(#brandRing)" stroke-width="2"/>
+          <circle cx="24" cy="24" r="2.6" fill="#22e5ff"/>
+        </svg>
+      </span>
+      <span class="logo-text">HISTORIAS</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="{{ '/editar/inicio/' if editing else '../inicio/' }}" class="{{ 'is-current' if current == 'inicio' else '' }}"><span class="nav-index">01</span><span class="nav-label">Inicio</span></a>
+      <a href="{{ '/editar/casos/' if editing else '../casos/' }}" class="{{ 'is-current' if current == 'casos' else '' }}"><span class="nav-index">02</span><span class="nav-label">Proyectos</span></a>
+      <a href="{{ '/editar/fotos/' if editing else '../fotos/' }}" class="{{ 'is-current' if current == 'fotos' else '' }}"><span class="nav-index">03</span><span class="nav-label">Fotos</span></a>
+      <a href="{{ '/editar/contacto/' if editing else '../contacto/' }}" class="{{ 'is-current' if current == 'contacto' else '' }}"><span class="nav-index">04</span><span class="nav-label">Contacto</span></a>
+    </nav>
+    <span class="nav-rule" aria-hidden="true"></span>
+    <button class="theme-button" id="themeButton" type="button" aria-label="Cambiar a blanco y negro"><span class="theme-orb" aria-hidden="true"></span><span class="theme-label">BLACK & WHITE</span></button>
+    <button class="menu-button" id="menuButton" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  </div>
+</header>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Fotos | Portafolio</title>
+  <meta name="theme-color" content="#07081a">
+  <link rel="icon" type="image/png" href="/assets/favicon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/fotos.css">
+  {% if editing %}<meta name="csrf" content="{{ csrf }}"><link rel="stylesheet" href="/css/editar.css">{% endif %}
+</head>
+<body{% if editing %} class="editing" data-save="{{ edit_save }}"{% endif %}>
+  {% include "partials/loader.html" %}
+  {% set current = "fotos" %}
+  {% include "partials/header.html" %}
+  <main>
+    <section class="foto-section">
+      <div class="container">
+        <div class="reveal">
+          <span class="section-label">PORTAFOLIO</span>
+          <h2><strong>Fotos.</strong></h2>
+          <p{% if editing %} contenteditable="plaintext-only" data-field="photos_intro" data-multiline="1"{% endif %}>{{ s.photos_intro }}</p>
+        </div>
+        <div class="foto-grid" id="fotoGrid">
+          {% for photo in photos %}
+          <div class="foto-cell">
+            <button type="button" data-id="{{ photo.id }}" data-src="/{{ photo.file_path }}" data-alt="{{ photo.alt }}" data-caption="{{ photo.caption }}">
+              <img src="/{{ photo.file_path }}" alt="{{ photo.alt }}">
+            </button>
+            {% if editing %}
+            <div class="foto-tools">
+              <label class="edit-add">Cambiar<input type="file" data-replace-photo="{{ photo.id }}" accept="image/jpeg,image/png,image/webp" hidden></label>
+              <button class="edit-remove" type="button" data-delete="{{ photo.id }}" data-action="delete-photo">Quitar</button>
+            </div>
+            {% endif %}
+          </div>
+          {% endfor %}
+          {% if editing %}
+          <button class="foto-add" type="button" id="addPhoto">Agregar foto</button>
+          <input id="newPhotos" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+  </main>
+  {% include "partials/footer.html" %}
+  <div class="case-lb" id="caseLb" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
+    <button type="button" id="caseLbx" aria-label="Cerrar">×</button>
+    <button class="case-lb-arrow prev" id="caseLbPrev" type="button" aria-label="Anterior">‹</button>
+    <button class="case-lb-arrow next" id="caseLbNext" type="button" aria-label="Siguiente">›</button>
+    <img id="caseLbimg" alt="">
+    <p class="case-lb-cap" id="caseLbcap" hidden></p>
+  </div>
+  <script src="/js/main.js"></script>
+  {% if editing %}{% include "partials/editbar.html" %}<script src="/js/editar.js?v=2"></script>{% endif %}
+</body>
+</html>
