@@ -28,7 +28,22 @@ if ($LASTEXITCODE -ne 0) {
 }
 Write-Host "Docker listo"
 
-Paso "2. Base de datos historias"
+Paso "2. Configuracion local (.env)"
+if (-not (Test-Path ".env")) {
+  $sesion = [guid]::NewGuid().ToString("N")
+  @(
+    "DATABASE_URL=postgresql://postgres:postgres@localhost:5433/historias",
+    "ADMIN_PASSWORD=0000",
+    "SECRET_KEY=$sesion",
+    "PORT=8080",
+    ""
+  ) | Set-Content -LiteralPath ".env" -Encoding UTF8
+  Write-Host "Creado .env (clave del admin: 0000)"
+} else {
+  Write-Host ".env ya existe"
+}
+
+Paso "3. Base de datos historias"
 $nombre = "portafolio-historias-pg"
 $existe = docker ps -a --filter "name=^/${nombre}$" --format "{{.Names}}"
 if (-not $existe) {
@@ -59,16 +74,17 @@ if ($LASTEXITCODE -ne 0) {
 }
 Write-Host "Base lista en puerto 5433"
 
-Paso "3. Puerto 8080 libre"
+Paso "4. Puerto 8080 libre"
 Get-NetTCPConnection -LocalPort 8080 -ErrorAction SilentlyContinue |
   Select-Object -ExpandProperty OwningProcess -Unique |
   ForEach-Object {
     try { Stop-Process -Id $_ -Force -ErrorAction SilentlyContinue } catch {}
   }
 
-Paso "4. Arrancando el sitio"
+Paso "5. Arrancando el sitio"
 Write-Host "Sitio:  http://127.0.0.1:8080"
 Write-Host "Admin:  http://127.0.0.1:8080/admin"
 Write-Host "La clave del admin esta en el archivo .env (ADMIN_PASSWORD)"
 Write-Host ""
 python server.py
+
