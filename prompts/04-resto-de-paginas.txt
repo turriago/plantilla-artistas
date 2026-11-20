@@ -1,0 +1,24 @@
+Prompt 4 — Llevar el mismo diseño al resto de la página
+========================================================
+
+Úsalo solo cuando la portada ya se vea como quieres.
+Pégalo en el mismo chat de Cursor.
+
+---
+
+Lee DISENO.md completo otra vez. Antes de editar, pregunta si la portada ya está bien y confirma que solo vas a copiar colores y letras a Proyectos, Fotos y Contacto, sin cambiar cómo se abren las fotos. Espera el sí.
+
+La portada ya tiene el diseño nuevo. Cuando confirme, lleva los mismos colores, fondos y tipografías a Proyectos, Fotos y Contacto.
+
+Archivos que puedes editar:
+- static/css/casos.css
+- static/css/fotos.css
+- static/css/contacto.css
+- en static/css/base.css, solo colores y tipografías que ya empezaste en la portada
+- templates/casos.html, fotos.html y contacto.html, solo para cambiar el enlace de fuentes si hace falta
+
+No cambies cómo se abren ni cómo se pasan las fotos y los videos. No toques static/js/. No borres id, class, data- ni las etiquetas {{ }} y {% %}. No cambies textos, enlaces ni botones. No agregues secciones. El modo BLACK & WHITE sigue funcionando en estas páginas.
+
+No uses la terminal y no publiques.
+
+Al terminar, dime en dos o tres frases qué unificaste en Proyectos, Fotos y Contacto.

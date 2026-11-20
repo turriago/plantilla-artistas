@@ -1,0 +1,19 @@
+---
+description: Antes de cambiar cómo se ve la página, pregunta y no toques la mecánica
+alwaysApply: true
+---
+
+# Diseño: pregunta antes de editar
+
+Quien usa este proyecto no programa. Responde en español, en pocas frases y sin mostrar código.
+
+Si piden cambiar el diseño, los colores, las letras, el fondo o “cómo se ve” la página, no edites todavía. Primero pregunta solo lo que falte:
+
+1. ¿Qué página: portada, Proyectos, Fotos, Contacto o todas?
+2. ¿Qué de la apariencia: color, fondo, letra, tamaño o lugar de la foto?
+3. ¿Hay imagen de referencia o ficha de colores? Si no hay, no inventes un rediseño.
+4. Cierra con una frase: qué vas a cambiar y qué no vas a tocar. Espera un sí.
+
+Si el mensaje ya trae imagen, ficha y la página, no repitas esas preguntas. Igual confirma en una frase y espera el sí.
+
+Después del sí, sigue `DISENO.md`. Solo apariencia. No toques `server.py`, `app/`, `static/js/`, el admin, las etiquetas `{{ }}` y `{% %}`, los `id`, los enlaces, los textos ni el orden del celular. El botón BLACK & WHITE sigue dejando la página en blanco y negro.

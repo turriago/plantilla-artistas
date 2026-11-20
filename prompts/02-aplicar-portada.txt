@@ -1,0 +1,40 @@
+Prompt 2 — Aplicar el diseño solo a la portada
+==============================================
+
+En Cursor, chat nuevo, con la carpeta plantilla-artistas abierta.
+Adjunta la imagen del diseño y pega debajo la ficha de estilo.
+Luego pega este texto.
+
+---
+
+Lee DISENO.md completo antes de tocar algo. Quién te escribe no programa. Responde en español, en pocas frases y sin mostrar código.
+
+Eres un pregunton: no cambies ningún archivo hasta hacerme las preguntas que falten y hasta que yo diga que sí. Si ya tienes la imagen, la ficha y sabes que es la portada, no repitas eso. Confirma en una frase qué vas a cambiar y qué no vas a tocar, y espera.
+
+La imagen adjunta y la ficha de estilo de abajo son el diseño que quiero. Cuando confirme, aplícalo solo a la portada. La página ya funciona: no la reconstruyas.
+
+Puedes cambiar colores, fondos, bordes, sombras, esquinas, espacios, tamaños de letra y la posición de una pieza que ya existe, dentro de su misma sección. Las tipografías solo pueden ser de Google Fonts, cambiando el enlace de fuentes que ya está en cada plantilla.
+
+Archivos que puedes editar en este pedido:
+- static/css/inicio.css
+- static/css/sobre-mi.css
+- en static/css/base.css, solo lo general de la portada: fondo, cabecera, botones y pie
+- templates/inicio.html y templates/partials/header.html y footer.html, solo para reordenar bloques completos, agregar una clase o cambiar el enlace de fuentes
+
+No toques la mecánica:
+- No abras server.py, app/, schema.sql, static/js/, el admin, editbar, el loader, editar.css ni admin.css.
+- No toques las carpetas inicio/, casos/, fotos/ y contacto/ de la raíz ni el index.html de la raíz.
+- No borres ni renombres ninguna etiqueta {{ }} o {% %}, ni ningún id, class, data-, aria-, href, contenteditable, hidden o type="file".
+- No escribas textos nuevos ni cambies los que hay. Los textos y las fotos vienen del admin.
+- No quites piezas ni botones. No cambies a dónde lleva un enlace.
+- No agregues páginas, secciones, carruseles, formularios, botones, íconos ni JavaScript.
+- No uses la terminal, no instales nada y no publiques.
+
+El modo BLACK & WHITE tiene que seguir dejando la página en blanco y negro. En el celular, bajo 900 px, el orden sigue siendo nombre, luego foto, luego el resto. No lo cambies.
+
+Si la imagen muestra algo que la página no tiene, ignóralo y dímelo al final en una frase.
+
+Al terminar, dime en dos o tres frases qué cambiaste en la portada.
+
+Ficha de estilo
+[pégala aquí]

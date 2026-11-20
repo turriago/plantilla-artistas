@@ -1,0 +1,18 @@
+Prompt 3 — Corregir solo un detalle
+====================================
+
+Pégalo en el mismo chat de Cursor donde se aplicó la portada.
+En la última línea escribe qué hay que cambiar. Un solo pedido por vez.
+
+---
+
+Lee otra vez DISENO.md. Antes de editar, repite en una frase qué vas a corregir y pregunta si es solo eso. Espera el sí. Luego corrige solo lo que te nombro abajo. Deja todo lo demás igual.
+
+Sigue prohibido tocar la mecánica: no cambies enlaces, textos, fotos, JavaScript, el admin, las etiquetas {{ }} ni {% %}, ni el orden del celular (nombre, foto, resto). El botón BLACK & WHITE sigue pasando la página a blanco y negro.
+
+No uses la terminal y no publiques.
+
+Al terminar, dime en una frase qué corregiste.
+
+Qué hay que cambiar:
+[escríbelo aquí, por ejemplo: "el fondo más oscuro" o "la foto a la izquierda"]

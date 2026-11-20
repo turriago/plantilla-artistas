@@ -1,0 +1,30 @@
+Prompts para cambiar cómo se ve la página
+==========================================
+
+Estos textos son para el taller. La persona no programa.
+Copia un prompt, lo pega en el chat y adjunta la imagen si el paso lo pide.
+
+La página ya funciona. Estos pedidos solo cambian la apariencia:
+colores, fondo, letras, tamaños, bordes y la posición de piezas que ya existen.
+
+No cambian la mecánica: el menú, los enlaces, el admin, las fotos,
+los videos, el botón BLACK & WHITE ni los textos guardados.
+
+Orden
+-----
+1. Primero carga tus datos en el admin (nombre, foto, proyectos).
+   El diseño no escribe tus textos.
+2. Abre 01-generar-diseno.txt. Cópialo en ChatGPT, Gemini o Claude.
+   Cambia solo lo que está entre corchetes. Guarda la imagen y la ficha.
+3. Abre Cursor, en un chat nuevo, con la carpeta plantilla-artistas.
+   Pega 02-aplicar-portada.txt y adjunta la imagen y la ficha.
+   Cursor pregunta antes de cambiar nada. Responde y, cuando diga
+   qué va a tocar, contesta que sí. Así no daña la página.
+4. Si algo quedó mal, pega 03-corregir.txt y di solo qué hay que arreglar.
+5. Cuando la portada te guste, pega 04-resto-de-paginas.txt.
+
+Antes de cada pedido de Cursor, el sitio debe estar abierto
+(arrancar.cmd) para poder refrescar el navegador y ver el cambio.
+
+Las reglas largas están en DISENO.md, en la raíz del proyecto.
+Los prompts de Cursor le piden al asistente que las lea antes de tocar nada.
